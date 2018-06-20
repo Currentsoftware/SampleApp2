@@ -32,6 +32,7 @@ namespace SampleApi.Data.DataProviders
         /// <summary>
         /// Initializes a new instance of the <see cref="TVMazeRESTDataProvider"/> class.
         /// </summary>
+        /// <param name="restClient">An implementation of IRestClient</param>
         public TVMazeRESTDataProvider(IRestClient restClient)
         {
             this.restClient = restClient;
@@ -44,7 +45,6 @@ namespace SampleApi.Data.DataProviders
         /// <exception cref="PageNotFoundException">Thrown when the page number exceeds the last page</exception>
         /// <exception cref="DataSourceOverloadException">Thrown when the rate limiter of the service kicked in</exception>
         /// <returns>A List of Show objects</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "response")]
         public List<Show> GetShows(int page)
         {
             var shows = new List<Show>(250);
@@ -55,7 +55,7 @@ namespace SampleApi.Data.DataProviders
 
             request.AddHeader("User-Agent", userAgent);
             request.AddHeader("Cache-Control", "no-cache");
-            
+
             IRestResponse response = this.restClient.Execute(request);
 
             switch ((int)response.StatusCode)
@@ -65,16 +65,16 @@ namespace SampleApi.Data.DataProviders
                 case 429:
                     throw new DataSourceOverloadException();
                 case 200:
-                    //do nothing
+                    // do nothing
                     break;
                 default:
-                    //better error handling required here
+                    // better error handling required here
                     return null;
             }
 
             var showResponse = JsonConvert.DeserializeObject<IEnumerable<ShowResponse>>(response.Content);
-            
-            foreach(var s in showResponse)
+
+            foreach (var s in showResponse)
             {
                 var show = new Show();
                 show.Id = s.Id;
@@ -93,7 +93,7 @@ namespace SampleApi.Data.DataProviders
         /// <returns>A Show object</returns>
         public Show GetShowDetails(int showId)
         {
-            this.restClient.BaseUrl = new System.Uri(baseUrl +  "/shows/" + showId.ToString(CultureInfo.InvariantCulture) );
+            this.restClient.BaseUrl = new System.Uri(baseUrl + "/shows/" + showId.ToString(CultureInfo.InvariantCulture));
 
             var request = new RestRequest(Method.GET);
 
@@ -109,10 +109,10 @@ namespace SampleApi.Data.DataProviders
                 case 429:
                     throw new DataSourceOverloadException();
                 case 200:
-                    //do nothing
+                    // do nothing
                     break;
                 default:
-                    //better error handling required here
+                    // better error handling required here
                     return null;
             }
 
@@ -121,7 +121,7 @@ namespace SampleApi.Data.DataProviders
             var show = new Show();
             show.Id = showResponse.Id;
             show.Name = showResponse.Name;
-            show.Cast.AddRange(GetCastMembers(showId));
+            show.Cast.AddRange(this.GetCastMembers(showId));
 
             return show;
         }
@@ -151,16 +151,16 @@ namespace SampleApi.Data.DataProviders
                 case 429:
                     throw new DataSourceOverloadException();
                 case 200:
-                    //do nothing
+                    // do nothing
                     break;
                 default:
-                    //better error handling required here
+                    // better error handling required here
                     return null;
             }
 
             var castResponse = JsonConvert.DeserializeObject<IEnumerable<CastResponse>>(response.Content);
 
-            foreach(var c in castResponse)
+            foreach (var c in castResponse)
             {
                 var member = new CastMember();
                 member.Id = Convert.ToInt32(c.Person["id"].ToString(), CultureInfo.InvariantCulture);
@@ -175,7 +175,6 @@ namespace SampleApi.Data.DataProviders
                     {
                         member.Birthdate = parsedDate;
                     }
-
                 }
 
                 castMembers.Add(member);

@@ -1,13 +1,7 @@
 ﻿#pragma warning disable 1591
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+#pragma warning disable SA1600
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace WebApplication1
 {
@@ -24,4 +18,5 @@ namespace WebApplication1
                 .Build();
     }
 }
+#pragma warning restore SA1600
 #pragma warning restore 1591

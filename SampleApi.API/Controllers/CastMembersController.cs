@@ -11,6 +11,7 @@ namespace SampleApi.API.Controllers
     /// Endpoints for getting CastMembers for a show
     /// </summary>
     [Route("api/shows/{id}/castmembers")]
+    [Produces("application/json")]
     public class CastMembersController : Controller
     {
         private IShowManager manager;
@@ -27,8 +28,18 @@ namespace SampleApi.API.Controllers
         /// <summary>
         /// Gets the castmemebers for a given show
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /api/shows/1/castmembers
+        ///
+        /// </remarks>
         /// <param name="id">The id of the show</param>
         /// <returns>An IActionResult</returns>
+        /// <response code="200">Returns the collection of shows</response>
+        /// <response code="400">If the id is smaller than 0</response>
+        /// <response code="404">If the show is not found</response>
+        /// <response code="500">If an unkown error occurs</response>
         [HttpGet]
         public IActionResult GetCastMembers(int id)
         {
@@ -40,7 +51,15 @@ namespace SampleApi.API.Controllers
             try
             {
                 var members = this.manager.GetCastMembers(id);
-                return this.Ok(members);
+
+                if (members == null)
+                {
+                    return this.NotFound();
+                }
+                else
+                {
+                    return this.Ok(members);
+                }
             }
             catch (Exception e)
             {

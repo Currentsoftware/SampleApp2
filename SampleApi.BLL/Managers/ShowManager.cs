@@ -1,11 +1,11 @@
-﻿using SampleApi.Common.Data;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using SampleApi.Common.Data;
 using SampleApi.Common.Entities;
 using SampleApi.Common.Exceptions;
 using SampleApi.Common.Logic;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 
 namespace SampleApi.BLL.Managers
 {
@@ -22,6 +22,7 @@ namespace SampleApi.BLL.Managers
         /// <summary>
         /// Initializes a new instance of the <see cref="ShowManager"/> class.
         /// </summary>
+        /// <param name="dataProvider">An implementation of ITVMazeDataProvider</param>
         public ShowManager(ITVMazeDataProvider dataProvider)
         {
             this.dataProvider = dataProvider;
@@ -38,28 +39,28 @@ namespace SampleApi.BLL.Managers
 
             var timer = Stopwatch.StartNew();
 
-            foreach(var show in shows)
+            foreach (var show in shows)
             {
                 try
                 {
-                    GetCastMembersForShow(show);
+                    this.GetCastMembersForShow(show);
                     if (timer.ElapsedMilliseconds > 10000)
                     {
                         timer.Restart();
                     }
                 }
-                catch(DataSourceOverloadException ex)
+                catch (DataSourceOverloadException ex)
                 {
                     Trace.WriteLine(ex);
-                    
+
                     // rudimentary synchronous solution
                     var duration = (int)(10000 - timer.ElapsedMilliseconds + 1);
                     Thread.Sleep(duration);
 
-                    GetCastMembersForShow(show);
+                    this.GetCastMembersForShow(show);
                 }
             }
-            
+
             return shows;
         }
 
@@ -76,8 +77,9 @@ namespace SampleApi.BLL.Managers
 
         private void GetCastMembersForShow(Show show)
         {
-            var castMembers = GetCastMembers(show.Id);
-            show.Cast.AddRange(castMembers);
+            var castMembers = this.GetCastMembers(show.Id);
+            var sorted = castMembers.OrderBy(c => c.Birthdate).ToList();
+            show.Cast.AddRange(sorted);
         }
     }
 }

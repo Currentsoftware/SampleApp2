@@ -2,18 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>SampleApi.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Release\netcoreapp2.0\SampleApi.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;SA1200;SA1633</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Debug\netcoreapp2.0\SampleApi.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;SA1200;SA1633</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreRateLimit" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>

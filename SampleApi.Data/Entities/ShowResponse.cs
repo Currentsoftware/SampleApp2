@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 
 namespace SampleApi.Data.Entities
 {
@@ -25,6 +25,5 @@ namespace SampleApi.Data.Entities
         /// Gets or sets the name of the show
         /// </summary>
         public string Name { get; set; }
-
     }
 }

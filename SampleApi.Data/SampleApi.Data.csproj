@@ -2,23 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>SampleApi.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Release\netcoreapp2.0\SampleApi.Data.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;SA1200;SA1633;SA1303</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Debug\netcoreapp2.0\SampleApi.Data.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;SA1200;SA1633;SA1303</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="RestSharp" Version="106.3.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
