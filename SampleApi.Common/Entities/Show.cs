@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using SampleApi.Common.Contracts;
 
 namespace SampleApi.Common.Entities
 {
     /// <summary>
     /// A DTO that holds show information
     /// </summary>
-    public class Show
+    public class Show : ContractBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Show"/> class.

@@ -65,6 +65,17 @@ namespace SampleApi.BLL.Managers
         }
 
         /// <summary>
+        /// Gets a page of Show objects from the data source
+        /// </summary>
+        /// <param name="showId">The id of the show to get</param>
+        /// <returns>A collection containing no more than 250 objects</returns>
+        public Show GetShow(int showId)
+        {
+            var show = this.dataProvider.GetShowDetails(showId);
+            return show;
+        }
+
+        /// <summary>
         /// Returns a collection of CastMembers for a given show
         /// </summary>
         /// <param name="showId">The id of the show</param>

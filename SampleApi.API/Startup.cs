@@ -45,7 +45,7 @@ namespace WebApplication1
                     new RateLimitRule()
                     {
                         Endpoint = "*",
-                        Limit = 3,
+                        Limit = 10,
                         Period = "3m"
                     }
                 };

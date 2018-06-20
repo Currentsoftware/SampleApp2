@@ -6,7 +6,7 @@ namespace SampleApi.Common.Entities
     /// <summary>
     /// A DTO that holds cast member information
     /// </summary>
-    public class CastMember : ContractBase
+    public class CastMember
     {
         /// <summary>
         /// Gets or sets the ID

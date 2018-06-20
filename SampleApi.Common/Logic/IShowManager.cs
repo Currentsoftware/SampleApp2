@@ -11,6 +11,13 @@ namespace SampleApi.Common.Logic
         /// <summary>
         /// Gets a page of Show objects from the data source
         /// </summary>
+        /// <param name="showId">The id of the show to get</param>
+        /// <returns>A collection of Show objects</returns>
+        Show GetShow(int showId);
+
+        /// <summary>
+        /// Gets a page of Show objects from the data source
+        /// </summary>
         /// <param name="pageId">The id of the page to get</param>
         /// <returns>A collection of Show objects</returns>
         IEnumerable<Show> GetShows(int pageId);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
@@ -121,7 +122,8 @@ namespace SampleApi.Data.DataProviders
             var show = new Show();
             show.Id = showResponse.Id;
             show.Name = showResponse.Name;
-            show.Cast.AddRange(this.GetCastMembers(showId));
+            var sortedMembers = this.GetCastMembers(showId).OrderBy(m => m.Birthdate);
+            show.Cast.AddRange(sortedMembers);
 
             return show;
         }
