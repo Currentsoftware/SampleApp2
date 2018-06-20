@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.Common", "SampleApi.Common\SampleApi.Common.csproj", "{ADC3376D-EA4F-45C9-A451-7E9B7C6830F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApi.Common", "SampleApi.Common\SampleApi.Common.csproj", "{ADC3376D-EA4F-45C9-A451-7E9B7C6830F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.API", "SampleApi.API\SampleApi.API.csproj", "{2B2981B4-7DEC-4FEE-B5F5-118678B864CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApi.API", "SampleApi.API\SampleApi.API.csproj", "{2B2981B4-7DEC-4FEE-B5F5-118678B864CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A139789F-F2B7-4A5C-BF5F-1B7D060C2369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.Data", "SampleApi.Data\SampleApi.Data.csproj", "{B596732B-A109-4603-BE2D-45157A7B716B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApi.Data", "SampleApi.Data\SampleApi.Data.csproj", "{B596732B-A109-4603-BE2D-45157A7B716B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.Data.Tests", "SampleApi.Data.Tests\SampleApi.Data.Tests.csproj", "{49893F6F-7BA2-45A6-9F99-078B1137FA17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApi.Data.Tests", "SampleApi.Data.Tests\SampleApi.Data.Tests.csproj", "{49893F6F-7BA2-45A6-9F99-078B1137FA17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{62943297-A048-4CBD-9BEF-5AA5814FA2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.BLL", "SampleApi.BLL\SampleApi.BLL.csproj", "{5DF19B1B-FCA9-4591-813F-A88E41A37F21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApi.BLL", "SampleApi.BLL\SampleApi.BLL.csproj", "{5DF19B1B-FCA9-4591-813F-A88E41A37F21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{676CC70A-E34A-4372-AE9C-3CB52F1ACC82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.BLL.Tests", "SampleApi.BLL.Tests\SampleApi.BLL.Tests.csproj", "{26632083-9DCF-438C-A253-851537BE0791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5DF19B1B-FCA9-4591-813F-A88E41A37F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DF19B1B-FCA9-4591-813F-A88E41A37F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DF19B1B-FCA9-4591-813F-A88E41A37F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26632083-9DCF-438C-A253-851537BE0791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26632083-9DCF-438C-A253-851537BE0791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26632083-9DCF-438C-A253-851537BE0791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26632083-9DCF-438C-A253-851537BE0791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{B596732B-A109-4603-BE2D-45157A7B716B} = {A139789F-F2B7-4A5C-BF5F-1B7D060C2369}
 		{49893F6F-7BA2-45A6-9F99-078B1137FA17} = {A139789F-F2B7-4A5C-BF5F-1B7D060C2369}
 		{5DF19B1B-FCA9-4591-813F-A88E41A37F21} = {62943297-A048-4CBD-9BEF-5AA5814FA2D6}
+		{26632083-9DCF-438C-A253-851537BE0791} = {62943297-A048-4CBD-9BEF-5AA5814FA2D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C747977-8428-41C4-8FA2-D987E23B1150}

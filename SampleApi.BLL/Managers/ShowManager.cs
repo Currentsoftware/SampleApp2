@@ -41,6 +41,7 @@ namespace SampleApi.BLL.Managers
 
             foreach (var show in shows)
             {
+                LoopStart:
                 try
                 {
                     this.GetCastMembersForShow(show);
@@ -57,7 +58,10 @@ namespace SampleApi.BLL.Managers
                     var duration = (int)(10000 - timer.ElapsedMilliseconds + 1);
                     Thread.Sleep(duration);
 
-                    this.GetCastMembersForShow(show);
+                    timer.Reset();
+
+                    // wow, first time use ever in c#
+                    goto LoopStart;
                 }
             }
 
