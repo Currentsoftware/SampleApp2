@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sampleapi
+  labels:
+    zonde: prod
+    version: v1
+spec:
+  containers:
+  -  name: sampleapi
+     image: currentsoftware/sampleapi:latest
+     ports:
+    -  containerPort: 8080
