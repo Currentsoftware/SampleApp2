@@ -10,4 +10,4 @@ spec:
   -  name: sampleapi
      image: currentsoftware/sampleapi:latest
      ports:
-    -  containerPort: 8080
+     -  containerPort: 8080
