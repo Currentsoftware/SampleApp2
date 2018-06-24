@@ -8,7 +8,7 @@ spec:
     metadata:
       labels:
         app: sampleapi
-    specs:
+    spec:
       containers:
       -  name: sampleapi-pod
          image: currentsoftware/sampleapi:latest
