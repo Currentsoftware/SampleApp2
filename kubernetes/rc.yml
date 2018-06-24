@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: sampleapi-rc
+spec:
+  replicas: 3
+  selector:
+    app: sampleapi
+  template:
+    metadata:
+      labels:
+        app: sampleapi
+    spec:
+      containers:
+      -  name: sampleapi-pod
+         image: currentsoftware/sampleapi:latest
+         ports:
+         -  containerPort: 8080
