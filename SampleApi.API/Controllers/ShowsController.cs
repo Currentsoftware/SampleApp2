@@ -146,8 +146,11 @@ namespace SampleApi.API.Controllers
 
         private void SetLinks(Show show, string baseUrl)
         {
-            show.Links.Add(new Link { Rel = "self", Href = baseUrl + "/api/shows/" + show.Id.ToString(), Method = "GET" });
-            show.Links.Add(new Link { Rel = "cast", Href = baseUrl + "/api/shows/" + show.Id.ToString() + "/castmembers", Method = "GET" });
+            if (show != null) 
+            {
+                show.Links.Add(new Link { Rel = "self", Href = baseUrl + "/api/shows/" + show.Id.ToString(), Method = "GET" });
+                show.Links.Add(new Link { Rel = "cast", Href = baseUrl + "/api/shows/" + show.Id.ToString() + "/castmembers", Method = "GET" });
+            }
         }
     }
 }
